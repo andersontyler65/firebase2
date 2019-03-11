@@ -5,7 +5,7 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import firebase from 'firebase'
 import SignUp from './components/auth/signup'
 import ItWorked from './components/auth/itworked'
-
+import TabNavigator from './components/router'
 
 // Initialize Firebase
  var config = {
@@ -111,14 +111,14 @@ export default class App extends Component {
     })
   }
 
-  logOut() {
-    firebase.auth().signOut()
-  }
+  // logOut() {
+  //   firebase.auth().signOut()
+  // }
 
   render() {
     return (
       <View style={styles.container}>
-        {this.state.userEmail ? <ItWorked logOut={this.logOut}/> : <SignUp signIn={this.signIn} signUp={this.signUp} toggleLogin={this.toggleLogin}/>}
+        {this.state.userEmail ? <TabNavigator /> : <SignUp signIn={this.signIn} signUp={this.signUp} toggleLogin={this.toggleLogin}/>}
       </View>
     );
   }

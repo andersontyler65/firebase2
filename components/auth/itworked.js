@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, Text, TextInput, Button } from 'react-native'
-
+import firebase from 'firebase'
 
 export default class ItWorked extends React.Component {
   constructor(props) {
@@ -11,14 +11,21 @@ export default class ItWorked extends React.Component {
 
     }
 
+
+
   }
+
+  logOut() {
+    firebase.auth().signOut()
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text>Logged In</Text>
         <Button
           title="Log out"
-          onPress={() => this.props.logOut()}
+          onPress={() => this.logOut()}
           />
       </View>
     )
